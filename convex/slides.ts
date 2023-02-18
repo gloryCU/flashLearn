@@ -14,6 +14,5 @@ export const getIndex = query(async ({ db }) => {
 
 export const setIndex = mutation(async ({ db }, index: number) => {
   const doc = await db.query("slideIndex").unique();
-  if (!doc) throw new Error("No slide index doc found");
-  await db.patch(doc?._id, { index });
+  if (doc) await db.patch(doc?._id, { index });
 });

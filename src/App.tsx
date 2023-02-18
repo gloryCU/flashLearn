@@ -19,6 +19,9 @@ export default function App() {
           <br />
           You can join #convex in the TreeHacks slack for help.
           <br />
+          Claim a free account at{" "}
+          <a href="https://convex.dev/hack">convex.dev/hack</a>
+          <br />
           Or <a href="https://convex.dev/community">join our Discord.</a>
           <br />
           Resources:
