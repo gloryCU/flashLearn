@@ -12,18 +12,18 @@ function giphyUrl(queryString: string) {
 }
 
 // Post a GIF chat message corresponding to the query string.
-const sendGif = action(
-  async ({ runMutation }, queryString: string, messageId: Id<"messages">) => {
-    // Fetch GIF url from GIPHY.
-    const data = await fetch(giphyUrl(queryString));
-    const json = (await data.json()) as any;
-    if (!data.ok) {
-      throw new Error(`Giphy errored: ${JSON.stringify(json)}`);
-    }
-    const url = json.data.embed_url;
-
-    // Write GIF url to Convex.
-    await runMutation("messages:update", messageId, { url });
-  }
-);
-export default sendGif;
+//const sendGif = action(
+//  async ({ runMutation }, queryString: string, messageId: Id<"messages">) => {
+//    // Fetch GIF url from GIPHY.
+//    const data = await fetch(giphyUrl(queryString));
+//    const json = (await data.json()) as any;
+//    if (!data.ok) {
+//      throw new Error(`Giphy errored: ${JSON.stringify(json)}`);
+//    }
+//    const url = json.data.embed_url;
+//
+//    // Write GIF url to Convex.
+//    await runMutation("messages:update", messageId, { url });
+//  }
+//);
+//export default sendGif;

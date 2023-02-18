@@ -1,17 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useMutation, useQuery } from "../convex/_generated/react";
 
-export const Slides = ({ index }: { index: number }) => {
+export const Slides = () => {
   const slides = useQuery("slides:list") ?? [];
-  index = useQuery("slides:getIndex") ?? 0;
-  const setSlideIndex = useMutation("slides:setIndex");
-  // pre-fetch images
-  useEffect(() => {
-    for (const src of slides) {
-      const img = new Image();
-      img.src = src;
-    }
-  }, [slides]);
+  const [index, setSlideIndex] = useState(0);
 
   return (
     <section>

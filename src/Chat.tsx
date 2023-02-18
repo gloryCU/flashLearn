@@ -2,34 +2,18 @@ import { useState } from "react";
 import { useMutation, useQuery } from "../convex/_generated/react";
 
 export const Chat = ({ name }: { name: string }) => {
-  const messages = useQuery("messages:list") ?? [];
+  const messages = [] as any;
 
   const [newMessageText, setNewMessageText] = useState("");
-  const sendMessage = useMutation("messages:send");
   return (
     <section>
       <h2>Chat</h2>
-      <ul>
-        {messages.map((message) => (
-          <li key={message._id.toString()}>
-            <span>{message.author}:</span>
-            <span>{message.body}</span>
-
-            {message.url && (
-              <figure>
-                <img src={message.url} />
-              </figure>
-            )}
-            <span>{new Date(message._creationTime).toLocaleTimeString()}</span>
-          </li>
-        ))}
-      </ul>
+      <ul>{messages}</ul>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           setNewMessageText("");
-          //alert(name + ": " + newMessageText);
-          sendMessage(newMessageText, name);
+          alert(name + ": " + newMessageText);
         }}
       >
         <input

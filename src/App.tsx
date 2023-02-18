@@ -54,14 +54,10 @@ export default function App() {
       {name ? (
         <>
           <Chat name={name} />
-          <Votes name={name} />
         </>
       ) : (
         <GetName finished={setName} />
       )}
-      <Slides index={1} />
-      {/*
-       */}
     </main>
   );
 }

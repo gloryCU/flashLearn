@@ -7,12 +7,6 @@ export const list = query(async ({ db, storage }) => {
   );
 });
 
-export const add = mutation(
-  async ({ db }, title: string, storageId: string) => {
-    return db.insert("slides", { title, storageId });
-  }
-);
-
 export const getIndex = query(async ({ db }) => {
   const doc = await db.query("slideIndex").unique();
   return doc?.index;
