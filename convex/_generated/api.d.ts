@@ -10,12 +10,8 @@
  */
 
 import type { ApiFromModules } from "convex/api";
-import type * as actions_createImage from "../actions/createImage";
-import type * as actions_sendGif from "../actions/sendGif";
-import type * as files from "../files";
-import type * as messages from "../messages";
-import type * as slides from "../slides";
-import type * as votes from "../votes";
+import type * as card from "../card";
+import type * as deck from "../deck";
 
 /**
  * A type describing your app's public Convex API.
@@ -27,10 +23,6 @@ import type * as votes from "../votes";
  * `ConvexReactClient` to create app-specific types.
  */
 export type API = ApiFromModules<{
-  "actions/createImage": typeof actions_createImage;
-  "actions/sendGif": typeof actions_sendGif;
-  files: typeof files;
-  messages: typeof messages;
-  slides: typeof slides;
-  votes: typeof votes;
+  card: typeof card;
+  deck: typeof deck;
 }>;

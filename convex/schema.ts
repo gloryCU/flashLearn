@@ -2,21 +2,16 @@ import { defineSchema, defineTable, s } from "convex/schema";
 
 export default defineSchema(
   {
-    messages: defineTable({
-      author: s.string(),
-      body: s.string(),
-      url: s.optional(s.string()),
-    }),
-    slides: defineTable({
-      title: s.optional(s.string()),
-      storageId: s.string(),
-    }),
-    slideIndex: defineTable({
+    cards: defineTable({
       index: s.number(),
+      deckId: s.id("decks"),
+      question: s.string(),
+      answer: s.string(),
     }),
-    votes: defineTable({
-      option: s.string(),
-      author: s.string(),
+    decks: defineTable({
+      name: s.string(),
+      description: s.string(),
+      cards: s.array(s.id("cards")),
     }),
   }
   //, { strict: false }
