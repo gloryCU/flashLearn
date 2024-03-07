@@ -1,13 +1,13 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import './App.css'
 import { useQuery,useConvexAuth } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { SignInButton, SignOutButton } from "@clerk/clerk-react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
   const topics = useQuery(api.topics.get);
-  const { isLoading, isAuthenticated } = useConvexAuth();
+  const { isAuthenticated } = useConvexAuth();
 
   return (
     <div className="App">
