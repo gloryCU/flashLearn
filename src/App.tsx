@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      {isAuthenticated ? <SignOutButton mode="modal" /> : <SignInButton mode="modal" />}
+      {isAuthenticated ? <SignOutButton /> : <SignInButton mode="modal" />}
       {isAuthenticated ? "Logged in" : "Logged out or still loading"}
       {topics?.map(({ _id, title }) => (
         <div key={_id}>{title}</div>
