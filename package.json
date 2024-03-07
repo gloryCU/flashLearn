@@ -10,7 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "convex": "^1.8.0",
+    "@clerk/clerk-react": "^4.30.7",
+    "convex": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -47,5 +48,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }  
+  }
 }
