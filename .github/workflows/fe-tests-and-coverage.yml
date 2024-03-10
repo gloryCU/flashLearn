@@ -17,10 +17,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: npm install
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14
 
       - name: Run tests with coverage
         id: run_tests_with_coverage
@@ -33,6 +38,6 @@ jobs:
       - name: Post coverage summary GitHub comment on PR
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ github.token }}
+          recreate: true
           message: |
             **Frontend Test Coverage summary**
