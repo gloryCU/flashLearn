@@ -34,14 +34,9 @@ jobs:
           sed -i -e '1d' -e '2c**Frontend Test Coverage summary**' -e '$d' ./coverage/summary.txt
           echo "::set-output name=coverage_summary::$(cat ./coverage/summary.txt)"
 
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage
-          path: './coverage/summary.txt'
-
       - name: Post coverage summary GitHub comment on PR
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: './frontend/coverage/summary.txt'
           message: ${{ steps.fe-tests-and-coverage.outputs.coverage_summary }}
