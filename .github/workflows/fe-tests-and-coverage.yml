@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
@@ -30,7 +30,7 @@ jobs:
       - name: Run tests with coverage
         id: fe-tests-and-coverage
         run: |
-          npm test -- --coverage
+          npm test --coverage
           sed -i -e '1d' -e '2c**Frontend Test Coverage summary**' -e '$d' ./coverage/summary.txt
           echo "::set-output name=coverage_summary::$(cat ./coverage/summary.txt)"
 
