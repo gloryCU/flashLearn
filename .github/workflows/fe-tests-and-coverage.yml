@@ -11,6 +11,9 @@ on:
 jobs:
   fe-tests-and-coverage:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
 
     steps:
       - name: Checkout code
@@ -25,7 +28,9 @@ jobs:
         run: npm install
 
       - name: Run tests with coverage
-        run: npm test -- --coverage
+        run: |
+          npm test -- --coverage
+          sed -i -e '1d' -e '2c**Frontend Test Coverage summary**' -e '$d' ./coverage/summary.txt
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v2
