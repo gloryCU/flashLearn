@@ -31,24 +31,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: coverage
-          path: coverage
+          path: './frontend/coverage/summary.txt'
 
-      # - name: Parse coverage report
-      #   id: parse-coverage
-      #   run: echo "::set-output name=coverage-summary::$(cat coverage/summary.json)"
-
-      # - name: Create GitHub comment
-      # TODO: Write a script to parse the coverage report and create a comment on the PR
-      #   uses: actions/github-script@v5
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     script: |
-      #       const summary = JSON.parse(process.env.coverage_summary);
-      #       const message = `Code Coverage Summary:\n\nCoverage Percentage: ${summary.coveragePercentage}%\nLines Covered: ${summary.linesCovered}\nLines Total: ${summary.linesTotal}`;
-
-      #       github.issues.createComment({
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         issue_number: context.issue.number,
-      #         body: message
-      #       });
+      - name: Post coverage summary GitHub comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          path: './frontend/coverage/summary.txt'
