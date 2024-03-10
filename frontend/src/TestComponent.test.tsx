@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { test } from '@jest/globals';
 import TestComponent from './TestComponent';
 
 describe('TestComponent', () => {
