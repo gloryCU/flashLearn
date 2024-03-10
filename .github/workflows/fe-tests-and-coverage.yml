@@ -33,11 +33,13 @@ jobs:
           echo "Running frontend tests with coverage"
           npm test --coverage
           sed -i -e '1d' -e '2c**Frontend Test Coverage summary**' -e '$d' ../coverage/text-summary.txt
-          echo "coverage_summary=$(cat ../coverage/summary.txt)" >> $GITHUB_OUTPUT
+          echo "coverage_summary=$(cat ../coverage/text-summary.txt)" >> $GITHUB_OUTPUT
 
       - name: Post coverage summary GitHub comment on PR
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           recreate: true
           message: |
-            **Frontend Test Coverage summary: ** ${{ steps.run_tests_with_coverage.outputs.coverage_summary }} Done
+            **Frontend Test Coverage summary: **
+            ${{ steps.run_tests_with_coverage.outputs.coverage_summary }}
+            **Done**
