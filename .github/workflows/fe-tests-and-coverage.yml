@@ -33,4 +33,6 @@ jobs:
       - name: Post coverage summary GitHub comment on PR
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          path: './frontend/coverage/summary.txt'
+          message: |
+            **Frontend Test Coverage summary**
+            ${{ steps.run_tests_with_coverage.outputs.coverage_summary }}
