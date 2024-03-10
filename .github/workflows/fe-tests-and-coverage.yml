@@ -32,7 +32,7 @@ jobs:
         run: |
           echo "Running frontend tests with coverage"
           npm test --coverage
-          sed -i -e '1d' -e '2c**Frontend Test Coverage summary**' -e '$d' ./coverage/text-summary.txt
+          sed -i -e '1d' -e '2c**Frontend Test Coverage summary**' -e '$d' ../coverage/text-summary.txt
           echo "coverage_summary=$(cat ./coverage/summary.txt)" >> $GITHUB_OUTPUT
 
       - name: Post coverage summary GitHub comment on PR
