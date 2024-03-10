@@ -40,5 +40,4 @@ jobs:
         with:
           recreate: true
           message: |
-            **Frontend Test Coverage summary**
-            ${{ steps.run_tests_with_coverage.outputs.coverage_summary }}
+            **Frontend Test Coverage summary: ** ${{ steps.run_tests_with_coverage.outputs.coverage_summary }} Done
