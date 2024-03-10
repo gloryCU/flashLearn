@@ -36,4 +36,3 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           message: |
             **Frontend Test Coverage summary**
-            ${{ steps.run_tests_with_coverage.outputs.coverage_summary }}
