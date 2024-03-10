@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: coverage
-          path: './frontend/coverage/summary.txt'
+          path: './coverage/summary.txt'
 
       - name: Post coverage summary GitHub comment on PR
         uses: marocchino/sticky-pull-request-comment@v2
