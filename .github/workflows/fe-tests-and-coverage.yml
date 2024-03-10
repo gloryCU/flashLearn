@@ -19,24 +19,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
-
       - name: Install dependencies
         run: npm install
 
       - name: Run tests with coverage
-        id: fe-tests-and-coverage
+        id: run_tests_with_coverage
         run: |
+          echo "Running frontend tests with coverage"
           npm test --coverage
           sed -i -e '1d' -e '2c**Frontend Test Coverage summary**' -e '$d' ./coverage/summary.txt
-          echo "COVERAGE_SUMMARY=$(cat ./coverage/summary.txt)" >> $GITHUB_ENV
+          echo "coverage_summary=$(cat ./coverage/summary.txt)" >> $GITHUB_OUTPUT
 
       - name: Post coverage summary GitHub comment on PR
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           path: './frontend/coverage/summary.txt'
-          message: $COVERAGE_SUMMARY
+          message: |
+            **Frontend Test Coverage summary**
+            ${{ steps.run_tests_with_coverage.outputs.coverage_summary }}
