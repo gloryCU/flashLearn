@@ -4,6 +4,6 @@ import TestComponent from './TestComponent';
 describe('TestComponent', () => {
     test('renders TestComponent', () => {
         render(<TestComponent />);
-        expect(screen.getByText('Test Component')).toBeInTheDocument(); // Fix the problem by using toBeInTheDocument
+        expect(screen.getByText('Test Component')).toBeInTheDocument();
     });
 });
