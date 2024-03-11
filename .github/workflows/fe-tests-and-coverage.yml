@@ -1,0 +1,41 @@
+name: Code Coverage
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  fe-tests-and-coverage:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests with coverage
+        id: run_tests_with_coverage
+        run: |
+          echo "Running frontend tests with coverage"
+          npm test --coverage
+          sed -i -e '1d' -e '2c**Frontend Test Coverage Summary:**' -e '$d' ../coverage/text-summary.txt
+
+      - name: Post coverage summary GitHub comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          recreate: true
+          path: 'coverage/text-summary.txt'

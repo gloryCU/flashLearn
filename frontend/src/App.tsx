@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 import './App.css'
 import { useQuery,useConvexAuth } from "convex/react";
-import { api } from "../convex/_generated/api";
+import { api } from "../../convex/_generated/api";
 import { SignInButton, SignOutButton } from "@clerk/clerk-react";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       {topics?.map(({ _id, title }) => (
         <div key={_id}>{title}</div>
       ))}
-      
+
     </div>
   )
 }
