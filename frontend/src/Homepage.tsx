@@ -22,13 +22,13 @@ export const Homepage = () => {
           <CardsPreview title="French Vocabulary - Adjectives" description="Learn common French adjectives with this deck." course="frenchclass" cards={25} />
           <CardsPreview title="Biology - Human Anatomy" description="Study the human body with these flashcards." course="sciencegeek" cards={50} />
           <CardsPreview title="SAT Vocabulary" description="Improve your vocabulary for the SAT exam." course="englishclass" cards={100} />
-          
+
         </div>
       </div>
     </main>
     <Footer />
     <div className="fixed bottom-4 gap-4 right-4">
-        {isAuthenticated ? <SignOutButton /> : 
+        {isAuthenticated ? <SignOutButton /> :
         <div>
           <SignUpButton />
           <SignInButton />
@@ -37,5 +37,3 @@ export const Homepage = () => {
   </div>
   );
 }
-
-
