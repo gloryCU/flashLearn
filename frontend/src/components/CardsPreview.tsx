@@ -16,7 +16,7 @@ const CardsPreview = ({title, description, course, cards} : CardsPreviewProps) =
                 alt="Deck thumbnail"
                 className="object-cover object-center"
                 height="360"
-                src=".\public\react.svg"
+                src="/react.svg"
                 style={{
                   aspectRatio: "640/360",
                   objectFit: "cover",
